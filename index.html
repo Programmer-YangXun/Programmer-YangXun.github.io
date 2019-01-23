@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/2019-01-14-MicroUtilityLib(C-Language)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/2019-01-24-An-Easy-Way-To-Hook-Functions-On-Windows-OS/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Programmer-YangXun">
@@ -348,7 +348,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/01/14/2019-01-14-MicroUtilityLib(C-Language)/" class="post-title-link" itemprop="url">MicroUtilityLib (C Language)</a>
+                <a href="/2019/01/24/2019-01-24-An-Easy-Way-To-Hook-Functions-On-Windows-OS/" class="post-title-link" itemprop="url">An Easy Way to Hook Functions on Windows OS</a>
               
             
           </h1>
@@ -373,7 +373,195 @@
                 
               
 
-              <time title="Created: 2019-01-14 09:15:00 / Modified: 14:21:37" itemprop="dateCreated datePublished" datetime="2019-01-14T09:15:00+08:00">2019-01-14</time>
+              <time title="Created: 2019-01-24 00:00:00 / Modified: 00:00:38" itemprop="dateCreated datePublished" datetime="2019-01-24T00:00:00+08:00">2019-01-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Tutorials/" itemprop="url" rel="index"><span itemprop="name">Tutorials</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Brief-Introduction-to-Hook"><a href="#Brief-Introduction-to-Hook" class="headerlink" title="Brief Introduction to Hook"></a>Brief Introduction to <a href="https://docs.microsoft.com/en-us/windows/desktop/winmsg/hooks" target="_blank" rel="noopener">Hook</a></h1><blockquote>
+<p>A hook is a point in the system message-handling mechanism where an application can install a subroutine to monitor the message traffic in the system and process certain types of messages before they reach the target window procedure.</p>
+</blockquote>
+<p>On Windows OS, there are a set of functions designed to hook/unhook windows in Windows API. For example,</p>
+<p><a href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setwindowshookexw" target="_blank" rel="noopener">SetWindowsHookExW</a></p>
+<blockquote>
+<p>Installs an application-defined hook procedure into a hook chain. You would install a hook procedure to monitor the system for certain types of events. These events are associated either with a specific thread or with all threads in the same desktop as the calling thread.</p>
+</blockquote>
+<blockquote>
+<p>SetWindowsHookEx can be used to inject a DLL into another process.</p>
+</blockquote>
+<p><a href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-unhookwindowshookex" target="_blank" rel="noopener">UnhookWindowsHookEx</a></p>
+<blockquote>
+<p>Removes a hook procedure installed in a hook chain by the SetWindowsHookEx function.</p>
+</blockquote>
+<p>By using Hook, we will be able to get/set data in hooked processes, and even modify codes dynamically.</p>
+<p><strong>To understand the following part of this article, you must</strong></p>
+<ol>
+<li>Have learned C/C++ Programming Language and Assembly Language (Intel x86)</li>
+<li>Have written Win32 Applications codes by using Windows API</li>
+<li>Have written DLL (Dynamic Link Library) codes</li>
+</ol>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/24/2019-01-24-An-Easy-Way-To-Hook-Functions-On-Windows-OS/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/2019-01-14-MicroUtilityLib(C-Language)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Programmer-YangXun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Programmer-YangXun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/23/2019-01-14-MicroUtilityLib(C-Language)/" class="post-title-link" itemprop="url">MicroUtilityLib (C Language)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-23 15:00:00 / Modified: 23:54:43" itemprop="dateCreated datePublished" datetime="2019-01-23T15:00:00+08:00">2019-01-23</time>
             
 
             
@@ -438,14 +626,16 @@
 
       
         
+          <h1 id="What’s-inside-the-library"><a href="#What’s-inside-the-library" class="headerlink" title="What’s inside the library"></a>What’s inside the <a href="https://github.com/Programmer-YangXun/MicroUtilityLib" target="_blank" rel="noopener">library</a></h1><h2 id="In-Source-File-“MicroUtilityLib-c”"><a href="#In-Source-File-“MicroUtilityLib-c”" class="headerlink" title="In Source File “MicroUtilityLib.c”"></a>In Source File “MicroUtilityLib.c”</h2><h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">DownloadFileFromInternetW</span><span class="params">(LPCWSTR lpcwUrl, LPCWSTR lpcwNewFileName, BOOL bFailIfFileExists)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Find all files/folders which can be accessible on a disk.</span></span><br><span class="line"><span class="comment">//The description of the parameter LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine can be found in Header File "MicroUtilityLib.h"</span></span><br><span class="line"><span class="function">BOOL <span class="title">FindDiskDataW</span><span class="params">(WCHAR wchDriveLetter, LPVOID lpData, LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">GetFileProductVersionW</span><span class="params">(LPCWSTR lpcwFileName, LPWSTR lpwFileProductVersionBuffer, DWORD cchFileProductVersionBuffer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function uses Windows API StrCmpLogicalW which works better than string compare functions like strcmp to sort strings. Strings are sorted in ascending.</span></span><br><span class="line"><span class="function">BOOL <span class="title">SortStringsLogicalW</span><span class="params">(LPWSTR *lpwStrings, DWORD dwNumberOfStrings)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function returns the index of a specified string in strings. If the string is not found, this funtcion returns (DWORD)-1. Strings must be sorted in ascending.</span></span><br><span class="line"><span class="function">DWORD <span class="title">FindStringInSortedStringsLogicalW</span><span class="params">(LPCWSTR lpcwStringToFind, LPWSTR *lpwStrings, DWORD dwLowerBound, DWORD dwUpperBound)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">GetFileCRC32W</span><span class="params">(LPCWSTR lpcwFileName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">INT <span class="title">GetCurrentDPI</span><span class="params">(AXIS Axis)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to get the base address of a running process, but might fail if no access rights.</span></span><br><span class="line"><span class="function">PVOID <span class="title">GetProcessBaseAddress</span><span class="params">(DWORD dwProcessID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to delete the executable file of current process, but might fail in some cases.</span></span><br><span class="line"><span class="function">VOID <span class="title">DeleteSelf</span><span class="params">(VOID)</span></span>;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <h1 id="What’s-inside-the-library"><a href="#What’s-inside-the-library" class="headerlink" title="What’s inside the library"></a>What’s inside the library</h1><h2 id="In-Source-File-“MicroUtilityLib-c”"><a href="#In-Source-File-“MicroUtilityLib-c”" class="headerlink" title="In Source File “MicroUtilityLib.c”"></a>In Source File “MicroUtilityLib.c”</h2><h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">DownloadFileFromInternetW</span><span class="params">(LPCWSTR lpcwUrl, LPCWSTR lpcwNewFileName, BOOL bFailIfFileExists)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Find all files/folders which can be accessible on a disk.</span></span><br><span class="line"><span class="comment">//The description of the parameter LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine can be found in Header File "MicroUtilityLib.h"</span></span><br><span class="line"><span class="function">BOOL <span class="title">FindDiskDataW</span><span class="params">(WCHAR wchDriveLetter, LPVOID lpData, LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">GetFileProductVersionW</span><span class="params">(LPCWSTR lpcwFileName, LPWSTR lpwFileProductVersionBuffer, DWORD cchFileProductVersionBuffer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function uses Windows API function StrCmpLogicalW which works better than string compare functions like strcmp to sort strings. Strings are sorted in ascending.</span></span><br><span class="line"><span class="function">BOOL <span class="title">SortStringsLogicalW</span><span class="params">(LPWSTR *lpwStrings, DWORD dwNumberOfStrings)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function returns the index of a specified string in strings. If the string is not found, this funtcion returns (DWORD)-1. Strings must be sorted in ascending.</span></span><br><span class="line"><span class="function">DWORD <span class="title">FindStringInSortedStringsLogicalW</span><span class="params">(LPCWSTR lpcwStringToFind, LPWSTR *lpwStrings, DWORD dwLowerBound, DWORD dwUpperBound)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">GetFileCRC32W</span><span class="params">(LPCWSTR lpcwFileName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function can be useful for High DPI support.</span></span><br><span class="line"><span class="function">INT <span class="title">GetCurrentDpiX</span><span class="params">(VOID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function can be useful for High DPI support.</span></span><br><span class="line"><span class="function">INT <span class="title">GetCurrentDpiY</span><span class="params">(VOID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to delete the executable file of current process, but might fail in some cases.</span></span><br><span class="line"><span class="function">VOID <span class="title">DeleteSelf</span><span class="params">(VOID)</span></span>;</span><br></pre></td></tr></table></figure>
-<h2 id="In-Header-File-“MicroUtilityLib-h”"><a href="#In-Header-File-“MicroUtilityLib-h”" class="headerlink" title="In Header File “MicroUtilityLib.h”"></a>In Header File “MicroUtilityLib.h”</h2><h3 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This macro converts the case of a character into lower</span></span><br><span class="line">ToLowerCaseW(ch);</span><br><span class="line">ToLowerCaseA(ch);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro converts the case of a character into upper</span></span><br><span class="line">ToLowerUpperW(ch);</span><br><span class="line">ToLowerUpperA(ch);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro combines two WORD integers into one DWORD integer</span></span><br><span class="line">MAKEDWORD(HIGH_WORD, LOW_WORD);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro combines two DWORD integers into one DWORD64 integer</span></span><br><span class="line">MAKEDWORD64(HIGH_DWORD, LOW_DWORD);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro scales standard width to fit current DPI</span></span><br><span class="line">ScaleX(iX, iCurrentDpi_X);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro scales standard height to fit current DPI</span></span><br><span class="line">ScaleY(iY, iCurrentDpi_Y);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro creates a window which fits current DPI</span></span><br><span class="line">DPIAware_CreateWindowExW(iCurrentDpi_X, iCurrentDpi_Y, dwExStyle, lpClassName, lpWindowName, dwStyle, iX, iY, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);</span><br></pre></td></tr></table></figure>
-<h3 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This is a callback function used for FindDiskDataW.</span></span><br><span class="line"><span class="comment">//Parameters in this function contain most information of current file/folder.</span></span><br><span class="line"><span class="comment">//return PROGRESS_STOP to stop function FindDiskDataW</span></span><br><span class="line">LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine;</span><br><span class="line"><span class="function">DWORD <span class="title">lpFindDiskData_Routine</span><span class="params">(LPWIN32_FIND_DATAW lpWin32_FindData, LPWSTR lpwPathName, LPVOID lpData)</span></span>;</span><br></pre></td></tr></table></figure>
-<p><strong>Please note Functions/Macros/Data Types ending with ‘W’ process Unicode strings, ‘A’ process ANSI strings.</strong></p>
-<h1 id="Supported-Platform"><a href="#Supported-Platform" class="headerlink" title="Supported Platform"></a>Supported Platform</h1><p>OS: Microsoft Windows 7 and above</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/23/2019-01-14-MicroUtilityLib(C-Language)/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -545,12 +735,24 @@
                 
               
 
-              <time title="Created: 2019-01-14 09:00:00 / Modified: 11:37:17" itemprop="dateCreated datePublished" datetime="2019-01-14T09:00:00+08:00">2019-01-14</time>
+              <time title="Created: 2019-01-14 09:00:00" itemprop="dateCreated datePublished" datetime="2019-01-14T09:00:00+08:00">2019-01-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-23 23:26:11" itemprop="dateModified" datetime="2019-01-23T23:26:11+08:00">2019-01-23</time>
               
             
           </span>
@@ -677,7 +879,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -694,7 +896,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
