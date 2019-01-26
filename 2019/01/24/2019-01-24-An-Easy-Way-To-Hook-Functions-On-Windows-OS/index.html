@@ -80,10 +80,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://github.githubassets.com/favicon.ico?v=6.7.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://github.githubassets.com/favicon.ico?v=6.7.0">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
@@ -129,7 +129,7 @@
 <meta property="og:site_name" content="Blog of Programmer-YangXun">
 <meta property="og:description" content="Brief Introduction to Hook A hook is a point in the system message-handling mechanism where an application can install a subroutine to monitor the message traffic in the system and process certain typ">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-01-23T16:00:38.699Z">
+<meta property="og:updated_time" content="2019-01-26T10:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Easy Way to Hook Functions on Windows OS">
 <meta name="twitter:description" content="Brief Introduction to Hook A hook is a point in the system message-handling mechanism where an application can install a subroutine to monitor the message traffic in the system and process certain typ">
@@ -374,12 +374,24 @@
                 
               
 
-              <time title="Created: 2019-01-24 00:00:00 / Modified: 00:00:38" itemprop="dateCreated datePublished" datetime="2019-01-24T00:00:00+08:00">2019-01-24</time>
+              <time title="Created: 2019-01-24 09:50:00" itemprop="dateCreated datePublished" datetime="2019-01-24T09:50:00+08:00">2019-01-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-26 18:00:00" itemprop="dateModified" datetime="2019-01-26T18:00:00+08:00">2019-01-26</time>
               
             
           </span>
@@ -421,6 +433,34 @@
             </span>
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">8 mins.</span>
+              
+            </div>
           
 
           
@@ -468,13 +508,14 @@
 <blockquote>
 <p>A 32-bit DLL cannot be injected into a 64-bit process, and a 64-bit DLL cannot be injected into a 32-bit process. If an application requires the use of hooks in other processes, it is required that a 32-bit application call SetWindowsHookEx to inject a 32-bit DLL into 32-bit processes, and a 64-bit application call SetWindowsHookEx to inject a 64-bit DLL into 64-bit processes. The 32-bit and 64-bit DLLs must have different names.</p>
 </blockquote>
-<p>If we want to set a hook successfully, we must set target platform correctly. In addition, access right is required for some processes, and we can solve this by running our programs as Administrator in most cases.</p>
+<p>If we want to set a hook successfully, we must set target platform correctly. In addition, access right is required for some processes (e.g. Windows Task Manager), and we can solve this by running our programs as Administrator in most cases.</p>
 <h1 id="How-to-Hook-Functions"><a href="#How-to-Hook-Functions" class="headerlink" title="How to Hook Functions"></a>How to Hook Functions</h1><p>The following is a basic and short tutorial that teaches you how to use Hook and other techniques to protect your running applications from being terminated by Windows Task Manager, and you will learn the techniques of hooking functions.</p>
 <p>As every Windows Programmer knows, most Win32 Applications call Windows API <a href="https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-openprocess" target="_blank" rel="noopener">OpenProcess</a> to get the handle of a process, and the process can be terminated by calling <a href="https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-terminateprocess" target="_blank" rel="noopener">TerminateProcess</a>, if the handle passed the function has no process access right PROCESS_TERMINATE, the function will fail. Windows Task Manager is no exception. This information is enough for us to get started.</p>
 <p>The Assembly Language (Intel x86) codes of a function usually consist of the following snippets<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">foobar proc</span><br><span class="line"><span class="keyword">push</span> <span class="built_in">ebp</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ebp</span>, <span class="built_in">esp</span></span><br><span class="line"><span class="comment">; ...</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">esp</span>, <span class="built_in">ebp</span></span><br><span class="line"><span class="keyword">pop</span> <span class="built_in">ebp</span></span><br><span class="line"><span class="keyword">ret</span></span><br><span class="line">foobar endp</span><br></pre></td></tr></table></figure></p>
 <p>The size of these codes are greater than 5 bytes, so once our DLL is injected to a process and overwrite first 5-byte machine codes of a function by placing our own codes &mdash; 1-byte machine code of CPU jump instruction and 4-byte displacement, we will be able to control the process.</p>
-<p>All key techniques have been explained. Here are the final-version codes in source file “HookLib.c”<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HOOKLIB_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4311)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"HookLib.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Shlwapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;TlHelp32.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Shlwapi.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Advapi32.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"User32.lib"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">"SharedData"</span>)</span></span><br><span class="line">DWORD dwSpecifiedProcessId = <span class="number">0</span>; <span class="comment">//ID of a process to be protected</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="meta-string">"/SECTION:SharedData,RWS"</span>)</span></span><br><span class="line">BYTE byteOriginalOpenProcessCode[<span class="number">5</span>], byteModifiedOpenProcessCode[<span class="number">5</span>]; <span class="comment">//First 5-byte machine code of specified functions</span></span><br><span class="line">CRITICAL_SECTION CriticalSection;</span><br><span class="line">HANDLE hProcess; <span class="comment">//Handle of the injected process</span></span><br><span class="line">HHOOK hHook;</span><br><span class="line">HMODULE hModule;</span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread_ChangeProcedureAddress</span><span class="params">(PVOID pvParam)</span></span>;</span><br><span class="line"><span class="function">HANDLE WINAPI <span class="title">ModifiedOpenProcess</span><span class="params">(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId)</span></span>;</span><br><span class="line"><span class="function">LRESULT WINAPI <span class="title">GetMsgProc</span><span class="params">(INT iCode, WPARAM wParam, LPARAM lParam)</span></span>;</span><br><span class="line"><span class="function">VOID <span class="title">ChangeProcedureAddress</span><span class="params">(PVOID pvProcedureAddress, PBYTE pbyteCode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL APIENTRY <span class="title">DllMain</span><span class="params">(HMODULE hInstance, DWORD fdwReason, LPVOID lpvReserved)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (fdwReason)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">	&#123;</span><br><span class="line">		hModule = hInstance;</span><br><span class="line">		HANDLE hToolhelp32Snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span> (hToolhelp32Snapshot != INVALID_HANDLE_VALUE)</span><br><span class="line">		&#123;</span><br><span class="line">			PROCESSENTRY32W ProcessEntry32 = &#123; <span class="keyword">sizeof</span>(ProcessEntry32) &#125;;</span><br><span class="line">			BOOL bRet = Process32FirstW(hToolhelp32Snapshot, &amp;ProcessEntry32);</span><br><span class="line">			<span class="keyword">while</span> (bRet)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (!StrCmpLogicalW(<span class="string">L"taskmgr.exe"</span>, ProcessEntry32.szExeFile) &amp;&amp; GetCurrentProcessId() == ProcessEntry32.th32ProcessID)</span><br><span class="line">				&#123;</span><br><span class="line">					CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, Thread_ChangeProcedureAddress, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				bRet = Process32NextW(hToolhelp32Snapshot, &amp;ProcessEntry32);</span><br><span class="line">			&#125;</span><br><span class="line">			CloseHandle(hToolhelp32Snapshot);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">	&#123;</span><br><span class="line">		ChangeProcedureAddress(OpenProcess, byteOriginalOpenProcessCode);</span><br><span class="line">		DeleteCriticalSection(&amp;CriticalSection);</span><br><span class="line">		UnhookWindowsHookEx(hHook);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread_ChangeProcedureAddress</span><span class="params">(PVOID pvParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Sleep(<span class="number">3000</span>); <span class="comment">//Wait for Windows Task Manager completely initialized, 3 seconds should be enough</span></span><br><span class="line">	InitializeCriticalSection(&amp;CriticalSection);</span><br><span class="line">	ReadProcessMemory(hProcess = GetCurrentProcess(), OpenProcess, byteOriginalOpenProcessCode, <span class="number">5</span>, <span class="literal">NULL</span>); <span class="comment">//Back up first 5-byte machine code of OpenProcess</span></span><br><span class="line">	*byteModifiedOpenProcessCode = <span class="number">0xE9</span>; <span class="comment">//Machine code of jmp (x86/x86-64 CPU instruction)</span></span><br><span class="line">	*(PDWORD)(byteModifiedOpenProcessCode + <span class="number">1</span>) = (DWORD)ModifiedOpenProcess - (DWORD)OpenProcess - <span class="number">5</span>; <span class="comment">//4-byte displacement</span></span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteModifiedOpenProcessCode); <span class="comment">//Overwrite first 5-byte machine codes of OpenProcess by placing modified codes</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HANDLE WINAPI <span class="title">ModifiedOpenProcess</span><span class="params">(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	EnterCriticalSection(&amp;CriticalSection);</span><br><span class="line">	<span class="keyword">if</span> (dwProcessId == dwSpecifiedProcessId)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//Force OpenProcess returns a handle that has no process access right PROCESS_TERMINATE so that TerminateProcess will fail, and the process will be protected</span></span><br><span class="line">		dwDesiredAccess = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteOriginalOpenProcessCode); <span class="comment">//Restore machine codes of OpenProcess so that OpenProcess can be called normally</span></span><br><span class="line">	HANDLE hProcess = OpenProcess(dwDesiredAccess, bInheritHandle, dwProcessId);</span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteModifiedOpenProcessCode); <span class="comment">//Overwrite machine codes of OpenProcess again</span></span><br><span class="line">	LeaveCriticalSection(&amp;CriticalSection);</span><br><span class="line">	<span class="keyword">return</span> hProcess;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT WINAPI <span class="title">GetMsgProc</span><span class="params">(INT iCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> CallNextHookEx(hHook, iCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HOOKLIB_API VOID <span class="title">SetGlobalWindowsHook</span><span class="params">(VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dwSpecifiedProcessId = GetCurrentProcessId();</span><br><span class="line">	hHook = SetWindowsHookExW(WH_GETMESSAGE, GetMsgProc, (HINSTANCE)hModule, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">ChangeProcedureAddress</span><span class="params">(PVOID pvProcedureAddress, PBYTE pbyteCode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DWORD dwOldProtect;</span><br><span class="line">	VirtualProtectEx(hProcess, pvProcedureAddress, <span class="number">5</span>, PAGE_READWRITE, &amp;dwOldProtect);</span><br><span class="line">	WriteProcessMemory(hProcess, pvProcedureAddress, pbyteCode, <span class="number">5</span>, <span class="literal">NULL</span>);</span><br><span class="line">	VirtualProtectEx(hProcess, pvProcedureAddress, <span class="number">5</span>, dwOldProtect, &amp;dwOldProtect);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>The complete project is hosted on <a href="https://github.com/Programmer-YangXun/Hook" target="_blank" rel="noopener">https://github.com/Programmer-YangXun/Hook</a>, I wish this tutorial will be helpful to you.</p>
+<p>All key techniques have been explained. Here are the final-version codes in source file “HookLib.c”<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HOOKLIB_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4311)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"HookLib.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Shlwapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;TlHelp32.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Advapi32.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Shlwapi.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"User32.lib"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">"SharedData"</span>)</span></span><br><span class="line">DWORD dwSpecifiedProcessId = <span class="number">0</span>; <span class="comment">//ID of a process to be protected</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="meta-string">"/SECTION:SharedData,RWS"</span>)</span></span><br><span class="line">BYTE byteOriginalOpenProcessCode[<span class="number">5</span>], byteModifiedOpenProcessCode[<span class="number">5</span>]; <span class="comment">//First 5-byte machine code of specified functions</span></span><br><span class="line">CRITICAL_SECTION CriticalSection;</span><br><span class="line">HANDLE hProcess; <span class="comment">//Handle of the injected process</span></span><br><span class="line">HHOOK hHook;</span><br><span class="line">HMODULE hModule;</span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread_ChangeProcedureAddress</span><span class="params">(PVOID pvParam)</span></span>;</span><br><span class="line"><span class="function">HANDLE WINAPI <span class="title">ModifiedOpenProcess</span><span class="params">(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId)</span></span>;</span><br><span class="line"><span class="function">LRESULT WINAPI <span class="title">GetMsgProc</span><span class="params">(INT iCode, WPARAM wParam, LPARAM lParam)</span></span>;</span><br><span class="line"><span class="function">VOID <span class="title">ChangeProcedureAddress</span><span class="params">(PVOID pvProcedureAddress, PBYTE pbyteCode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL APIENTRY <span class="title">DllMain</span><span class="params">(HMODULE hInstance, DWORD fdwReason, LPVOID lpvReserved)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (fdwReason)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">	&#123;</span><br><span class="line">		hModule = hInstance;</span><br><span class="line">		HANDLE hToolhelp32Snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span> (hToolhelp32Snapshot != INVALID_HANDLE_VALUE)</span><br><span class="line">		&#123;</span><br><span class="line">			PROCESSENTRY32W ProcessEntry32 = &#123; <span class="keyword">sizeof</span>(ProcessEntry32) &#125;;</span><br><span class="line">			BOOL bRet = Process32FirstW(hToolhelp32Snapshot, &amp;ProcessEntry32);</span><br><span class="line">			<span class="keyword">while</span> (bRet)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (!StrCmpLogicalW(<span class="string">L"taskmgr.exe"</span>, ProcessEntry32.szExeFile) &amp;&amp; GetCurrentProcessId() == ProcessEntry32.th32ProcessID)</span><br><span class="line">				&#123;</span><br><span class="line">					InitializeCriticalSection(&amp;CriticalSection);</span><br><span class="line">					CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, Thread_ChangeProcedureAddress, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				bRet = Process32NextW(hToolhelp32Snapshot, &amp;ProcessEntry32);</span><br><span class="line">			&#125;</span><br><span class="line">			CloseHandle(hToolhelp32Snapshot);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">	&#123;</span><br><span class="line">		ChangeProcedureAddress(OpenProcess, byteOriginalOpenProcessCode);</span><br><span class="line">		DeleteCriticalSection(&amp;CriticalSection);</span><br><span class="line">		UnhookWindowsHookEx(hHook);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread_ChangeProcedureAddress</span><span class="params">(PVOID pvParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ReadProcessMemory(hProcess = GetCurrentProcess(), OpenProcess, byteOriginalOpenProcessCode, <span class="number">5</span>, <span class="literal">NULL</span>); <span class="comment">//Back up first 5-byte machine code of OpenProcess</span></span><br><span class="line">	*byteModifiedOpenProcessCode = <span class="number">0xE9</span>; <span class="comment">//Machine code of jmp (x86/x86-64 CPU instruction)</span></span><br><span class="line">	*(PDWORD)(byteModifiedOpenProcessCode + <span class="number">1</span>) = (DWORD)ModifiedOpenProcess - (DWORD)OpenProcess - <span class="number">5</span>; <span class="comment">//4-byte displacement</span></span><br><span class="line">	Sleep(<span class="number">1000</span>); <span class="comment">//Wait for Windows Task Manager completely initialized, 1 second should be enough</span></span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteModifiedOpenProcessCode); <span class="comment">//Overwrite first 5-byte machine codes of OpenProcess by placing modified codes</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HANDLE WINAPI <span class="title">ModifiedOpenProcess</span><span class="params">(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	EnterCriticalSection(&amp;CriticalSection);</span><br><span class="line">	<span class="keyword">if</span> (dwProcessId == dwSpecifiedProcessId)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//Force OpenProcess returns a handle that has no process access right PROCESS_TERMINATE so that TerminateProcess will fail, and the process will be protected</span></span><br><span class="line">		dwDesiredAccess = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteOriginalOpenProcessCode); <span class="comment">//Restore machine codes of OpenProcess so that OpenProcess can be called normally</span></span><br><span class="line">	HANDLE hProcess = OpenProcess(dwDesiredAccess, bInheritHandle, dwProcessId);</span><br><span class="line">	ChangeProcedureAddress(OpenProcess, byteModifiedOpenProcessCode); <span class="comment">//Overwrite machine codes of OpenProcess again</span></span><br><span class="line">	LeaveCriticalSection(&amp;CriticalSection);</span><br><span class="line">	<span class="keyword">return</span> hProcess;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT WINAPI <span class="title">GetMsgProc</span><span class="params">(INT iCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> CallNextHookEx(hHook, iCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HOOKLIB_API VOID <span class="title">SetGlobalWindowsHook</span><span class="params">(VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dwSpecifiedProcessId = GetCurrentProcessId();</span><br><span class="line">	hHook = SetWindowsHookExW(WH_GETMESSAGE, GetMsgProc, (HINSTANCE)hModule, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">VOID <span class="title">ChangeProcedureAddress</span><span class="params">(PVOID pvProcedureAddress, PBYTE pbyteCode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DWORD dwOldProtect;</span><br><span class="line">	VirtualProtectEx(hProcess, pvProcedureAddress, <span class="number">5</span>, PAGE_READWRITE, &amp;dwOldProtect);</span><br><span class="line">	WriteProcessMemory(hProcess, pvProcedureAddress, pbyteCode, <span class="number">5</span>, <span class="literal">NULL</span>);</span><br><span class="line">	VirtualProtectEx(hProcess, pvProcedureAddress, <span class="number">5</span>, dwOldProtect, &amp;dwOldProtect);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>The complete project is hosted on <a href="https://github.com/Programmer-YangXun/Hook" target="_blank" rel="noopener">https://github.com/Programmer-YangXun/Hook</a>.</p>
+<p>I wish this tutorial will be helpful to you.</p>
 
       
     </div>
@@ -505,7 +546,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/2019-01-14-MicroUtilityLib(C-Language)/" rel="next" title="MicroUtilityLib (C Language)">
+              <a href="/2019/01/14/2019-01-14-MicroUtilityLib(C-Language)/" rel="next" title="MicroUtilityLib (C Language)">
                 <i class="fa fa-chevron-left"></i> MicroUtilityLib (C Language)
               </a>
             
@@ -534,6 +575,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
 
   
 
@@ -606,7 +651,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -699,9 +746,28 @@
   </a></a></span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">12k</span>
+  
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">11 mins.</span>
+  
 </div>
+
+
+
+
+
 
 
 
@@ -848,6 +914,33 @@
 
 
   
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '75399040c7a9bc3c543c',
+    clientSecret: 'aef14f4f71be77f3f5090069f0ee8ad7448707cf',
+    repo: 'Programmer-YangXun.github.io',
+    owner: 'Programmer-YangXun',
+    admin: ['Programmer-YangXun'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true',
+    language: ''
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
@@ -879,6 +972,83 @@
   
 
   
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
 
   
 
