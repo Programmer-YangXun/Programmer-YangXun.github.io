@@ -87,10 +87,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-github.ico?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-github.png?v=6.7.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-github.ico?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-github.png?v=6.7.0">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
@@ -107,7 +107,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: false,
     fastclick: true,
     lazyload: false,
@@ -133,7 +133,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="MicroUtilityLib (C Language)">
 <meta property="og:url" content="http://yoursite.com/2019/01/14/2019-01-14-MicroUtilityLib(C-Language)/index.html">
-<meta property="og:site_name" content="Blog of Programmer-YangXun">
+<meta property="og:site_name" content="Blog of Hydr10n">
 <meta property="og:description" content="What’s inside the libraryIn Source File “MicroUtilityLib.c”Functions1234567891011121314151617181920212223BOOL DownloadFileFromInternetW(LPCWSTR lpcwUrl, LPCWSTR lpcwNewFileName, BOOL bFailIfFileExists">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-01-26T04:00:00.000Z">
@@ -156,7 +156,7 @@
   };
 </script>
 
-  <title>MicroUtilityLib (C Language) | Blog of Programmer-YangXun</title>
+  <title>MicroUtilityLib (C Language) | Blog of Hydr10n</title>
   
 
 
@@ -215,7 +215,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Blog of Programmer-YangXun</span>
+        <span class="site-title">Blog of Hydr10n</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -370,13 +370,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/2019-01-14-MicroUtilityLib(C-Language)/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Programmer-YangXun">
-      <meta itemprop="description" content="Be like water.">
+      <meta itemprop="name" content="Hydr10n">
+      <meta itemprop="description" content="Do Androids Dream of Electric Sheep?">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Programmer-YangXun">
+      <meta itemprop="name" content="Blog of Hydr10n">
     </span>
 
     
@@ -521,7 +521,7 @@
       
 
       
-        <h1 id="What’s-inside-the-library"><a href="#What’s-inside-the-library" class="headerlink" title="What’s inside the library"></a>What’s inside the <a href="https://github.com/Programmer-YangXun/MicroUtilityLib" target="_blank" rel="noopener">library</a></h1><h2 id="In-Source-File-“MicroUtilityLib-c”"><a href="#In-Source-File-“MicroUtilityLib-c”" class="headerlink" title="In Source File “MicroUtilityLib.c”"></a>In Source File “MicroUtilityLib.c”</h2><h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">DownloadFileFromInternetW</span><span class="params">(LPCWSTR lpcwUrl, LPCWSTR lpcwNewFileName, BOOL bFailIfFileExists)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Find all files/folders which can be accessible on a disk.</span></span><br><span class="line"><span class="comment">//The description of the parameter LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine can be found in Header File "MicroUtilityLib.h"</span></span><br><span class="line"><span class="function">BOOL <span class="title">FindDiskDataW</span><span class="params">(WCHAR wchDriveLetter, LPVOID lpData, LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">GetFileProductVersionW</span><span class="params">(LPCWSTR lpcwFileName, LPWSTR lpwFileProductVersionBuffer, DWORD cchFileProductVersionBuffer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function uses Windows API StrCmpLogicalW which works better than string compare functions like strcmp to sort strings. Strings are sorted in ascending.</span></span><br><span class="line"><span class="function">BOOL <span class="title">SortStringsLogicalW</span><span class="params">(LPWSTR *lpwStrings, DWORD dwNumberOfStrings)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to find a specified string in strings and return the index. If the string is not found, this funtcion will return (DWORD)-1. Strings must be sorted in ascending because this function uses binary search algorithm. This function is not case-sensitive.</span></span><br><span class="line"><span class="function">DWORD <span class="title">FindStringInSortedStringsLogicalW</span><span class="params">(LPCWSTR lpcwStringToFind, LPWSTR *lpwStrings, DWORD dwLowerBound, DWORD dwUpperBound)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">GetFileCRC32W</span><span class="params">(LPCWSTR lpcwFileName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">INT <span class="title">GetCurrentDPI</span><span class="params">(AXIS Axis)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to get the base address of a process, but might fail if no access rights.</span></span><br><span class="line"><span class="function">PVOID <span class="title">GetProcessBaseAddress</span><span class="params">(DWORD dwProcessID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to delete the executable file of current process, but might fail in some cases.</span></span><br><span class="line"><span class="function">VOID <span class="title">DeleteSelf</span><span class="params">(VOID)</span></span>;</span><br></pre></td></tr></table></figure>
+        <h1 id="What’s-inside-the-library"><a href="#What’s-inside-the-library" class="headerlink" title="What’s inside the library"></a>What’s inside the <a href="https://github.com/Hydr10n/MicroUtilityLib" target="_blank" rel="noopener">library</a></h1><h2 id="In-Source-File-“MicroUtilityLib-c”"><a href="#In-Source-File-“MicroUtilityLib-c”" class="headerlink" title="In Source File “MicroUtilityLib.c”"></a>In Source File “MicroUtilityLib.c”</h2><h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">DownloadFileFromInternetW</span><span class="params">(LPCWSTR lpcwUrl, LPCWSTR lpcwNewFileName, BOOL bFailIfFileExists)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Find all files/folders which can be accessible on a disk.</span></span><br><span class="line"><span class="comment">//The description of the parameter LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine can be found in Header File "MicroUtilityLib.h"</span></span><br><span class="line"><span class="function">BOOL <span class="title">FindDiskDataW</span><span class="params">(WCHAR wchDriveLetter, LPVOID lpData, LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">GetFileProductVersionW</span><span class="params">(LPCWSTR lpcwFileName, LPWSTR lpwFileProductVersionBuffer, DWORD cchFileProductVersionBuffer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function uses Windows API StrCmpLogicalW which works better than string compare functions like strcmp to sort strings. Strings are sorted in ascending.</span></span><br><span class="line"><span class="function">BOOL <span class="title">SortStringsLogicalW</span><span class="params">(LPWSTR *lpwStrings, DWORD dwNumberOfStrings)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to find a specified string in strings and return the index. If the string is not found, this funtcion will return (DWORD)-1. Strings must be sorted in ascending because this function uses binary search algorithm. This function is not case-sensitive.</span></span><br><span class="line"><span class="function">DWORD <span class="title">FindStringInSortedStringsLogicalW</span><span class="params">(LPCWSTR lpcwStringToFind, LPWSTR *lpwStrings, DWORD dwLowerBound, DWORD dwUpperBound)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD <span class="title">GetFileCRC32W</span><span class="params">(LPCWSTR lpcwFileName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function">INT <span class="title">GetCurrentDPI</span><span class="params">(AXIS Axis)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to get the base address of a process, but might fail if no access rights.</span></span><br><span class="line"><span class="function">PVOID <span class="title">GetProcessBaseAddress</span><span class="params">(DWORD dwProcessID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This function attempts to delete the executable file of current process, but might fail in some cases.</span></span><br><span class="line"><span class="function">VOID <span class="title">DeleteSelf</span><span class="params">(VOID)</span></span>;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="In-Header-File-“MicroUtilityLib-h”"><a href="#In-Header-File-“MicroUtilityLib-h”" class="headerlink" title="In Header File “MicroUtilityLib.h”"></a>In Header File “MicroUtilityLib.h”</h2><h3 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//This macro converts the case of a character into lower</span></span><br><span class="line">ToLowerCaseW(ch);</span><br><span class="line">ToLowerCaseA(ch);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro converts the case of a character into upper</span></span><br><span class="line">ToLowerUpperW(ch);</span><br><span class="line">ToLowerUpperA(ch);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro combines two WORD integers into one DWORD integer</span></span><br><span class="line">MAKEDWORD(HIGH_WORD, LOW_WORD);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro combines two DWORD integers into one DWORD64 integer</span></span><br><span class="line">MAKEDWORD64(HIGH_DWORD, LOW_DWORD);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro scales standard width (in pixels) to fit current DPI</span></span><br><span class="line">ScaleX(iX, iCurrentDpi_X);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro scales standard height (in pixels) to fit current DPI</span></span><br><span class="line">ScaleY(iY, iCurrentDpi_Y);</span><br><span class="line"></span><br><span class="line"><span class="comment">//This macro creates a window which fits current DPI</span></span><br><span class="line">DPIAware_CreateWindowExW(iCurrentDpi_X, iCurrentDpi_Y, dwExStyle, lpClassName, lpWindowName, dwStyle, iX, iY, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);</span><br></pre></td></tr></table></figure>
 <h3 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> _AXIS &#123; AxisX = LOGPIXELSX, AxisY = LOGPIXELSY &#125; AXIS;</span><br><span class="line"></span><br><span class="line"><span class="comment">//This is a callback function used for FindDiskDataW.</span></span><br><span class="line"><span class="comment">//Parameters in this function contain most information of current file/folder.</span></span><br><span class="line"><span class="comment">//return PROGRESS_STOP to stop function FindDiskDataW</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">DWORD</span><span class="params">(CALLBACK* LPFIND_DISK_DATA_ROUTINEW)</span><span class="params">(LPWIN32_FIND_DATAW lpWin32_FindData, LPWSTR lpwPathName, LPVOID lpData)</span></span>;</span><br><span class="line">LPFIND_DISK_DATA_ROUTINEW lpFindDiskData_Routine;</span><br><span class="line"><span class="function">DWORD <span class="title">lpFindDiskData_Routine</span><span class="params">(LPWIN32_FIND_DATAW lpWin32_FindData, LPWSTR lpwPathName, LPVOID lpData)</span></span>;</span><br></pre></td></tr></table></figure>
@@ -634,10 +634,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Programmer-YangXun">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Hydr10n">
             
-              <p class="site-author-name" itemprop="name">Programmer-YangXun</p>
-              <p class="site-description motion-element" itemprop="description">Be like water.</p>
+              <p class="site-author-name" itemprop="name">Hydr10n</p>
+              <p class="site-description motion-element" itemprop="description">Do Androids Dream of Electric Sheep?</p>
           </div>
 
           
@@ -691,7 +691,7 @@
                   
                     
                   
-                  <a href="https://github.com/Programmer-YangXun" title="GitHub &rarr; https://github.com/Programmer-YangXun" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/Hydr10n" title="GitHub &rarr; https://github.com/Hydr10n" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -741,6 +741,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -757,7 +764,7 @@
     <i class="fa fa-github"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">
-    <a href="https://github.com/Programmer-YangXun" target="_blank">Programmer-YangXun<a>
+    <a href="https://github.com/Programmer-YangXun" target="_blank">Hydr10n<a>
   </a></a></span>
 
   
@@ -829,13 +836,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -955,9 +955,9 @@
   var gitalk = new Gitalk({
     clientID: '75399040c7a9bc3c543c',
     clientSecret: 'aef14f4f71be77f3f5090069f0ee8ad7448707cf',
-    repo: 'Programmer-YangXun.github.io',
-    owner: 'Programmer-YangXun',
-    admin: ['Programmer-YangXun'],
+    repo: 'Hydr10n.github.io',
+    owner: 'Hydr10n',
+    admin: ['Hydr10n'],
     id: md5(location.pathname),
     distractionFreeMode: 'true',
     language: ''
